@@ -255,10 +255,8 @@ def step_impl(context, host, proxy):
 
 @given(u'debug "{host}"')
 def step_impl(context,host):
-    debug_result =  context.remote_cmd(cmd='debug',
+    result =  context.remote_cmd(cmd='command',
         host=host,
         ignore_rc=True,
-        module_args='atomic host upgrade')
-    fd = open('/tmp/aa','w')
-    fd.write(str(debug_result))
-    fd.close()
+        module_args='hostname')
+    print result
