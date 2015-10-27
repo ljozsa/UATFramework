@@ -259,4 +259,4 @@ def step_impl(context,host):
         host=host,
         ignore_rc=True,
         module_args='hostname')
-    print result
+    print(result)
