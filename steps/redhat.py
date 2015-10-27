@@ -252,3 +252,13 @@ def step_impl(context, host, proxy):
     else:
         error_msg = False
     assert error_msg == "Unacceptable TLS certificate", "'Unacceptable TLS certificate' error message not found!"
+
+@given(u'debug "{host}"')
+def step_impl(context,host):
+    debug_result =  context.remote_cmd(cmd='debug',
+        host=host,
+        ignore_rc=True,
+        module_args='atomic host upgrade')
+    fd = open('/tmp/aa','w')
+    fd.write(str(debug_result))
+    fd.close()
